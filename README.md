@@ -6,7 +6,7 @@ An exclusive message board where users will only be able to see anonymous messag
 
 The pattern for this system is MVC and we're hosting our application and database on Google Cloud Platform. The server is sitting on a container in Cloud Run and the database on Cloud SQL.
 
-### System Design
+### Architecture Design
 
 ```mermaid
 flowchart LR
@@ -17,7 +17,7 @@ flowchart LR
     subgraph gcr[Google Cloud Run]
       express[Express Server]
     end
-    subgraph gsql[Google SQL]
+    subgraph gsql[Google Cloud SQL]
       db[(PostgreSQL DB)]
     end
   end
@@ -31,13 +31,33 @@ flowchart LR
   style express fill:#68a063,stroke:#2d5016,color:#fff
 ```
 
-### Database Schema
+### System Design
+
+```mermaid
+flowchart RL
+  client
+  express[Express Server]
+  passport
+  session
+  database
+
+  subgraph express[Express Server]
+    passport
+    session
+  end
+
+  client -->|HTTPS| express
+  express -->|session ID| client
+  passport <--> database
+```
+
+### Database Design
 
 ```mermaid
 erDiagram
   direction LR
   ACCOUNT ||--o{MESSAGE : ""
-  SESSION ||--o{ACCOUNT : ""
+  SESSION ||--||ACCOUNT : ""
 
   ACCOUNT {
     int id PK
@@ -54,11 +74,10 @@ erDiagram
 
   MESSAGE {
     int id PK
-    varchar name
-    int quantity
-    float price
-    text imageUrl
-    int category_id FK
+    int acccount_id FK
+    varchar(255) title
+    text message
+    added timestamp
   }
 ```
 
