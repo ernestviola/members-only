@@ -4,6 +4,8 @@ import { fileURLToPath } from 'node:url';
 import passport from './lib/config/passport.js';
 import session from './lib/config/session.js';
 
+import indexRouter from './routes/indexRouter.js';
+
 // Initialize variables
 const PORT = process.env.PORT || 3000;
 const viewsPath = path.join(
@@ -34,9 +36,10 @@ app.use((req, res, next) => {
     res.locals.currentUser = req.user;
   }
   next();
-}); // Automatically set currentUser on views
+}); // Automatically set currentUser for views
 
 // Routes
+app.use(indexRouter);
 
 // Error handling
 
