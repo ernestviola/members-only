@@ -46,9 +46,10 @@ flowchart RL
     session
   end
 
-  client -->|HTTPS| express
+
   express -->|session ID| client
-  passport <--> database
+  client -->|username/password| express
+  express <-->|data| database
 ```
 
 ### Database Design
