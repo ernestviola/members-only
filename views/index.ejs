@@ -4,8 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
+    <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <h1>Hello World</h1>
+    <%- include('components/navbar') %>
+    <div class="homepage-container">
+      <p class="hero">
+        <span class="color-primary font-text">See</span>
+        <span class="color-secondary font-header">Who's</span>
+        <span class="color-primary font-text">Saying</span>
+        <span class="color-secondary font-header">What</span>
+      </p>
+      <div>
+        <ol class="directions font-text">
+          <li>Figure out the access code</li>
+          <li>Sign up for an account</li>
+          <li>Reveal usernames</li>
+          <li>Leave a message for others</li>
+        </ol>
+      </div>
+      <div class="auth-buttons">
+        <a class="btn auth-btn" href="">Login</a>
+        <a class="btn auth-btn" href="">Sign Up</a>
+      </div>
+    </div>
   </body>
 </html>

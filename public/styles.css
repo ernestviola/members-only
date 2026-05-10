@@ -74,7 +74,92 @@ h6 {
   isolation: isolate;
 }
 
-#root {
+@font-face {
+  font-family: boreal;
+  src: url('/fonts/Borel/Borel-Regular.woff2');
+}
+
+@font-face {
+  font-family: cagliostro;
+  src: url('/fonts/Cagliostro/Cagliostro-Regular.woff2');
+}
+
+:root {
   --primary-color: #230903;
   --secondary-color: #aac0aa;
+}
+
+.color-primary {
+  color: var(--primary-color);
+}
+
+.color-secondary {
+  color: var(--secondary-color);
+}
+
+.font-header {
+  font-family: boreal;
+}
+
+.font-text {
+  font-family: cagliostro;
+}
+
+body {
+  min-height: 100vh;
+  background-image: linear-gradient(to bottom, #ffffff, #e6f1e6);
+}
+
+nav {
+  padding: 20px;
+}
+
+.logo {
+  color: var(--primary-color);
+  font-family: boreal;
+  font-size: 22px;
+  text-decoration: none;
+}
+
+.btn {
+  background-color: var(--primary-color);
+  font-family: cagliostro;
+  text-decoration: none;
+  color: white;
+  border-radius: 35px;
+  text-align: center;
+  border: none;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.auth-btn {
+  padding: 10px;
+  width: 100px;
+}
+
+.homepage-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.hero {
+  margin-top: 20%;
+  font-size: 40px;
+  text-align: center;
+}
+
+.directions {
+  font-size: 16px;
+  width: fit-content;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
 }
