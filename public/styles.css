@@ -129,6 +129,7 @@ nav {
   border-radius: 35px;
   text-align: center;
   border: none;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 .btn:hover {
@@ -151,6 +152,7 @@ nav {
   margin-top: 20%;
   font-size: 40px;
   text-align: center;
+  text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .directions {
