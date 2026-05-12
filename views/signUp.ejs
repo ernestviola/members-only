@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles.css" />
+    <title>Sign Up</title>
+  </head>
+  <body>
+    <%- include('components/navbar') %>
+    <div class="sign-up-container">
+      <form action="/sign-up" method="post" class="auth-form">
+        <div class="auth-form-inputs">
+          <input
+            type="text"
+            placeholder="username"
+            name="username"
+            aria-label="username"
+          />
+          <input
+            type="text"
+            placeholder="password"
+            name="password"
+            aria-label="password"
+          />
+          <input
+            type="text"
+            placeholder="access code"
+            name="access-code"
+            aria-label="access code"
+          />
+        </div>
+        <button class="btn auth-btn">Sign Up</button>
+      </form>
+      <div>
+        <ol class="directions font-text">
+          <li>Figure out the access code</li>
+          <li>Sign up for an account</li>
+          <li>Reveal usernames</li>
+          <li>Leave a message for others</li>
+        </ol>
+      </div>
+    </div>
+  </body>
+</html>
