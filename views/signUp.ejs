@@ -14,21 +14,39 @@
           <input
             type="text"
             placeholder="username"
+            value="<%= locals.formData?.username || '' %>"
             name="username"
             aria-label="username"
+            required
+            class='<%= locals.fieldErrors?.username ? 'input-error' : '' %>'
           />
+          <% if (locals.fieldErrors?.username) {%>
+            <span class='error-msg'><%= fieldErrors.username %></span>
+          <% } %>
           <input
             type="text"
             placeholder="password"
+            value="<%= locals.formData?.password || '' %>"
             name="password"
             aria-label="password"
+            required
+            class='<%= locals.fieldErrors?.password ? 'input-error' : '' %>'
           />
+          <% if (locals.fieldErrors?.password) {%>
+            <span class='error-msg'><%= fieldErrors.password %></span>
+          <% } %>
           <input
             type="text"
             placeholder="access code"
-            name="access-code"
+            value="<%= locals.formData?.accessCode || '' %>"
+            name="accessCode"
             aria-label="access code"
+            required
+            class='<%= locals.fieldErrors?.accessCode ? 'input-error' : '' %>'
           />
+          <% if (locals.fieldErrors?.accessCode) {%>
+            <span class='error-msg'><%= fieldErrors.accessCode %></span>
+          <% } %>
         </div>
         <button class="btn auth-btn">Sign Up</button>
       </form>

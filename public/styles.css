@@ -87,6 +87,7 @@ h6 {
 :root {
   --primary-color: #230903;
   --secondary-color: #aac0aa;
+  --error-color: #ff4f4f;
 }
 
 .color-primary {
@@ -195,4 +196,18 @@ nav {
 
 .auth-form-inputs > input {
   padding: 6px 10px;
+}
+
+.error-msg {
+  color: var(--error-color);
+}
+
+input {
+  border: 1px solid gray;
+  border-radius: 2px;
+}
+
+.input-error {
+  border: 1px solid var(--error-color);
+  border-radius: 2px;
 }
