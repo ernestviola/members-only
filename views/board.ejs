@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel='stylesheet' href='/styles.css'>
+    <script src='/script.js' defer></script>
     <title>Message Board</title>
   </head>
   <body>
@@ -12,13 +13,19 @@
       <h1>Message Board</h1>
       <% if (locals.currentUser) { %>
       <form action="/message" method="post" class='message-form'>
-        <textarea
-          name="message"
-          id="message"
-          maxlength='200'
-          placeholder="leave a message..."
-        ></textarea>
-        <button class="btn post-btn">Post</button>
+        <div class='textarea-wrapper'>
+          <textarea
+            name="message"
+            id="newMessage"
+            maxlength='200'
+            placeholder="leave a message..."
+            class='new-message'
+          ></textarea>
+        </div>
+        <div class='form-components'>
+          <span class='message-count-container'><span class='message-count' id='message-count'>0</span>/200</span>
+          <button class="btn post-btn">Post</button>
+        </div>
       </form>
       <% } %>
       

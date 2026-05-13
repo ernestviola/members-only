@@ -49,7 +49,7 @@ indexController.getBoard = async (req, res, next) => {
   try {
     const q = `
       select ${req.user ? 'a.username,' : ''} m.message, m.added from message m
-      inner join account a on m.account_id = a.id
+      inner join account a on m.account_id = a.id order by m.added desc
       `;
     const { rows } = await pool.query(q);
 
