@@ -34,7 +34,7 @@
       <div class='messages'>
         <% locals.messages.forEach(message => { %>
           <div class='message-container'>
-            <span class='message-message'>"<%= message.message %>"</span>
+            <span class='message-message'><%= message.message %></span>
             <span class='message-username'>- <%= message.username ? message.username : 'anonymous' %></span>
             <span class='message-date'><%= message.added.toLocaleDateString() %></span>
           </div>

@@ -34,6 +34,7 @@ const validateAccessCode = [
 
 const validateMessage = [
   body('message')
+    .trim()
     .notEmpty()
     .withMessage('A message must contain text.')
     .isLength({ max: 200 })
