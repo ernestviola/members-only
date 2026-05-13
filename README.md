@@ -1,5 +1,7 @@
 # Members only message board
 
+The access code is: Best App Ever
+
 An exclusive message board where users will only be able to see anonymous messages unless they're authenticated.
 
 ## Architecture

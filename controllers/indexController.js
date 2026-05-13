@@ -62,7 +62,6 @@ indexController.getBoard = async (req, res, next) => {
 };
 
 indexController.postMessage = [
-  validateMessage,
   (req, res, next) => {
     if (req.isAuthenticated()) {
       next();
@@ -70,6 +69,7 @@ indexController.postMessage = [
       return res.redirect('/board');
     }
   },
+  validateMessage,
   async (req, res, next) => {
     const errors = validationResult(req);
     const { message } = matchedData(req);
@@ -79,12 +79,8 @@ indexController.postMessage = [
         if (error.path) {
           fieldErrors[error.path] = error.msg;
         }
-
-        return res.render('board', {
-          fieldErrors,
-          formData: req.body,
-        });
       });
+      return res.redirect('/board');
     }
 
     try {
@@ -96,7 +92,7 @@ indexController.postMessage = [
       return next(error);
     }
 
-    res.redirect('/board');
+    return res.redirect('/board');
   },
 ];
 
@@ -112,8 +108,6 @@ indexController.postSignUp = [
     const { username, password, accessCode } = matchedData(req);
 
     if (!errors.isEmpty()) {
-      console.log(req.body);
-
       const fieldErrors = {};
       errors.array().forEach((error) => {
         if (error.path) {
@@ -144,7 +138,6 @@ indexController.postSignUp = [
       });
     } catch (error) {
       // get username is unavailable error
-      console.log(error);
       if (error.code === '23505') {
         return res.render('signUp', {
           fieldErrors: {
@@ -170,16 +163,12 @@ indexController.postLogin = [
     const { username, password, accessCode } = matchedData(req);
 
     if (!errors.isEmpty()) {
-      console.log(req.body);
-
       const fieldErrors = {};
       errors.array().forEach((error) => {
         if (error.path) {
           fieldErrors[error.path] = error.msg;
         }
       });
-
-      console.log(fieldErrors);
 
       return res.render('login', {
         fieldErrors,
