@@ -9,7 +9,6 @@ create table if not exists account (
 create table if not exists message (
   id integer primary key generated always as identity,
   account_id integer not null references account(id) on delete cascade,
-  title varchar(255),
   message text,
   added timestamp default current_timestamp
 );
