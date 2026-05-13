@@ -45,12 +45,14 @@ indexController.get = (req, res) => {
   return res.render('index');
 };
 
-indexController.getBoard = async (req, res) => {
+indexController.getBoard = async (req, res, next) => {
   try {
-    const { rows } = await pool.query(`
-      select ${req.user ? 'a.username' : 'unknown user'}, m.message, m.added from message m
+    const q = `
+      select ${req.user ? 'a.username,' : ''} m.message, m.added from message m
       inner join account a on m.account_id = a.id
-      `);
+      `;
+    const { rows } = await pool.query(q);
+
     return res.render('board', {
       messages: rows,
     });

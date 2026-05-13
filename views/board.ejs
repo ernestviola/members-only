@@ -8,24 +8,31 @@
   </head>
   <body>
     <%- include('components/navbar') %>
-    <h1>Message Board</h1>
-    <form action="/message" method="post" class='message-form'>
-      <textarea
-        name="message"
-        id="message"
-        placeholder="leave a message."
-      ></textarea>
-      <button class="btn">Post</button>
-    </form>
-
-    <% if (locals.messages) {%>
-      <% locals.messages.forEach(message => { %>
-        <div>
-          <span><%= message.username %></span>
-          <span><%= message.message %></span>
-          <span><%= message.added %></span>
-        </div>
-      <% }) %>
-    <% } %>
+    <div class='board-container'>
+      <h1>Message Board</h1>
+      <% if (locals.currentUser) { %>
+      <form action="/message" method="post" class='message-form'>
+        <textarea
+          name="message"
+          id="message"
+          maxlength='200'
+          placeholder="leave a message..."
+        ></textarea>
+        <button class="btn post-btn">Post</button>
+      </form>
+      <% } %>
+      
+      <% if (locals.messages) {%>
+      <div class='messages'>
+        <% locals.messages.forEach(message => { %>
+          <div class='message-container'>
+            <span class='message-message'>"<%= message.message %>"</span>
+            <span class='message-username'>- <%= message.username ? message.username : 'anonymous' %></span>
+            <span class='message-date'><%= message.added.toLocaleDateString() %></span>
+          </div>
+        <% }) %>
+      </div>
+      <% } %>
+    </div>
   </body>
 </html>

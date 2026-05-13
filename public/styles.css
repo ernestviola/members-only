@@ -225,3 +225,61 @@ input {
   border: 1px solid var(--error-color);
   border-radius: 2px;
 }
+
+.board-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.message-form {
+  position: relative;
+  width: 350px;
+  height: 180px;
+}
+
+.message-form > textarea {
+  resize: none;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+}
+
+.message-form > button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  transform: translate(-10px, -10px);
+}
+
+.post-btn {
+  font-size: 14px;
+  padding: 4px 20px;
+}
+
+.message-container {
+  position: relative;
+  color: white;
+  width: 350px;
+  min-height: 100px;
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.message-message {
+  padding: 20px 0px;
+}
+
+.message-date {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  font-size: 14px;
+}
