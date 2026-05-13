@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel='stylesheet' href='/styles.css'>
+    <title>Message Board</title>
+  </head>
+  <body>
+    <%- include('components/navbar') %>
+    <h1>Message Board</h1>
+    <form action="/message" method="post" class='message-form'>
+      <textarea
+        name="message"
+        id="message"
+        placeholder="leave a message."
+      ></textarea>
+      <button class="btn">Post</button>
+    </form>
+
+    <% if (locals.messages) {%>
+      <% locals.messages.forEach(message => { %>
+        <div>
+          <span><%= message.username %></span>
+          <span><%= message.message %></span>
+          <span><%= message.added %></span>
+        </div>
+      <% }) %>
+    <% } %>
+  </body>
+</html>

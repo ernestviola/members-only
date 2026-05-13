@@ -4,14 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/styles.css" />
-    <title>Sign Up</title>
+    <title>Login</title>
   </head>
   <body>
     <%- include('components/navbar') %>
     <div class="sign-up-container">
-      <form action="/sign-up" method="post" class="auth-form">
+      <form action="/login" method="post" class="auth-form">
+        
         <div class="auth-form-inputs">
-          <span class='auth-form-title'>Sign Up</span>
+          <span class='auth-form-title'>Login</span>
           <input
             type="text"
             placeholder="username"
@@ -36,29 +37,9 @@
           <% if (locals.fieldErrors?.password) {%>
             <span class='error-msg'><%= fieldErrors.password %></span>
           <% } %>
-          <input
-            type="text"
-            placeholder="access code"
-            value="<%= locals.formData?.accessCode || '' %>"
-            name="accessCode"
-            aria-label="access code"
-            required
-            class='<%= locals.fieldErrors?.accessCode ? 'input-error' : '' %>'
-          />
-          <% if (locals.fieldErrors?.accessCode) {%>
-            <span class='error-msg'><%= fieldErrors.accessCode %></span>
-          <% } %>
         </div>
-        <button class="btn auth-btn">Sign Up</button>
+        <button class="btn auth-btn" type='submit'>Login</button>
       </form>
-      <div>
-        <ol class="directions font-text">
-          <li>Figure out the access code</li>
-          <li>Sign up for an account</li>
-          <li>Reveal usernames</li>
-          <li>Leave a message for others</li>
-        </ol>
-      </div>
     </div>
   </body>
 </html>

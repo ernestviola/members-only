@@ -4,7 +4,6 @@ create table if not exists account (
   id integer primary key generated always as identity,
   username varchar(255) unique not null,
   password text not null,
-  verified boolean default false
 );
 
 create table if not exists message (
@@ -19,7 +18,7 @@ COMMIT;
 
 -- Used by pg sessions
 BEGIN;
-CREATE TABLE "session" (
+CREATE TABLE if not exists "session" (
   "sid" varchar NOT NULL COLLATE "default",
   "sess" json NOT NULL,
   "expire" timestamp(6) NOT NULL

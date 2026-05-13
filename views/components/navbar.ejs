@@ -1,3 +1,6 @@
 <nav>
   <a class="logo" href="/">Members Only</a>
+  <% if (locals.currentUser) { %>
+    <a href='/logout' class='btn logout-btn'>Logout</a>
+  <% } %>
 </nav>

@@ -64,7 +64,6 @@ erDiagram
     int id PK
     varchar username
     varchar password
-    varchar salt
   }
 
   SESSION {
