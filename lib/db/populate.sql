@@ -3,7 +3,7 @@ BEGIN;
 create table if not exists account (
   id integer primary key generated always as identity,
   username varchar(255) unique not null,
-  password text not null,
+  password text not null
 );
 
 create table if not exists message (
