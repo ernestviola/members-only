@@ -17,6 +17,7 @@ availableSecrets:
 steps:
   # Migrate SQL files
   - name: postgres:alpine
+    id: 'Run database migrations'
     entrypoint: sh
     secretEnv: ['DB_USER', 'DB_PASSWORD']
     args:
@@ -33,6 +34,7 @@ steps:
 
   # Build artifact repo if doesn't exist
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    id: 'Create Artifact Registry repository'
     entrypoint: bash
     args:
       - -c
@@ -45,6 +47,7 @@ steps:
           --description="Docker repository for ${_SERVICE_NAME}"
 
   - name: gcr.io/cloud-builders/docker
+    id: 'Build Docker image'
     args:
       - build
       - -t
@@ -55,6 +58,7 @@ steps:
 
   # Push both tags to Artifact Registry
   - name: gcr.io/cloud-builders/docker
+    id: 'Push image to Artifact Registry'
     args:
       - push
       - --all-tags
@@ -62,6 +66,7 @@ steps:
 
   # Deploy to Cloud Run
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    id: 'Deploy to Cloud Run'
     entrypoint: gcloud
     args:
       - run
